@@ -10,9 +10,11 @@ const RepositoryItem = (props: Props) => {
   const { listItem } = props;
 
   return (
-    <div
+    <a
       className="repository-container clickable"
-      onClick={() => window.open(listItem.node.url, "_blank")}
+      href={listItem.node.url}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       <div>
         <p className="name">{listItem.node.name}</p>
@@ -21,7 +23,7 @@ const RepositoryItem = (props: Props) => {
           <StarIcon />
         </p>
       </div>
-    </div>
+    </a>
   );
 };
 

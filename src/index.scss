@@ -24,6 +24,11 @@ body {
   color: white;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 #root {
   @extend .flex-center;
   padding: 24px 0;
@@ -99,12 +104,10 @@ form {
   margin: 12px 0;
   background-color: darken($mainColor, 2%);
   padding: 0 14px;
-
   box-shadow: $dropShadow;
-  :hover {
-    svg {
-      fill: goldenrod;
-    }
+  transition: background-color 0.2s;
+  &:hover {
+    background-color: darken($mainColor, 4%);
   }
   div {
     width: 100%;
