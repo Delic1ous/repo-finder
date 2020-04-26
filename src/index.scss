@@ -1,0 +1,173 @@
+$borderRadius: 8px;
+$mainColor: #292929;
+$dropShadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.5),
+  0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+body {
+  background-color: lighten($mainColor, 2%);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: white;
+}
+
+#root {
+  @extend .flex-center;
+  padding: 24px 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  background-color: $mainColor;
+  width: 100%;
+  max-width: 480px;
+  padding: 24px 12px;
+  min-height: calc(100vh - 96px);
+  box-shadow: $dropShadow;
+  border-radius: $borderRadius;
+}
+
+svg.loader {
+  flex-grow: 1;
+  fill: lighten($mainColor, 80%)
+}
+
+form {
+  @extend .flex-center;
+  align-self: center;
+  margin-bottom: 12px;
+  box-shadow: $dropShadow;
+  border-radius: $borderRadius;
+  width: 100%;
+  input {
+    padding-left: 12px;
+    flex-grow: 1;
+    height: 50px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+    border-top-left-radius: $borderRadius;
+    border-bottom-left-radius: $borderRadius;
+    background-color: darken($mainColor, 4%);
+    color: white;
+  }
+  button {
+    @extend .flex-center;
+    width: 50px;
+    height: 50px;
+    padding-right: 12px;
+    flex-direction: column;
+    border-top-right-radius: $borderRadius;
+    border-bottom-right-radius: $borderRadius;
+    box-sizing: border-box;
+    border: none;
+    background-color: darken($mainColor, 4%);
+    cursor: pointer;
+    color: white;
+    &:focus {
+      outline: none;
+      // box-shadow: inset $dropShadow;
+    }
+  }
+}
+
+.repositories-list {
+  padding: 0 12px;
+  flex-grow: 1;
+}
+
+.repository-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: $borderRadius;
+  margin: 12px 0;
+  background-color: darken($mainColor, 2%);
+  padding: 0 14px;
+
+  box-shadow: $dropShadow;
+  :hover {
+    svg {
+      fill: goldenrod;
+    }
+  }
+  div {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+
+    p {
+      line-break: auto;
+      display: flex;
+      align-items: center;
+      svg {
+        margin-left: 8px;
+      }
+    }
+    p.name {
+      margin-right: 8px;
+      line-break: anywhere;
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 14px;
+  margin-top: 12px;
+  border-radius: $borderRadius;
+  button {
+    @extend .clickable;
+    border: none;
+    color: white;
+    background: darken($mainColor, 6%);
+    font-size: 16px;
+    padding: 0;
+    height: 35px;
+    width: 120px;
+    font-weight: bold;
+    box-sizing: border-box;
+    border-radius: $borderRadius;
+    box-shadow: $dropShadow;
+    &:hover {
+      background: darken($mainColor, 8%);
+    }
+    &:disabled {
+      background: lighten($mainColor, 2%);
+      color: darken(white, 40%);
+      cursor: not-allowed;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+@media screen and (max-width: 504px) {
+  #root {
+    padding: 0;
+  }
+  .App {
+    border-radius: 0;
+    min-height: 100vh;
+  }
+}

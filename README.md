@@ -1,3 +1,15 @@
+Deployed Project: 
+### `[http://delic1ous.github.io/repo-finder](http://delic1ous.github.io/repo-finder)`
+
+Usage
+You need these environment variables:
+
+### `REACT_APP_GIT=your_github_token`
+
+Place where it could be generated - https://github.com/settings/tokens (no permissions are required, so leave the checkboxes empty)
+
+<br />
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
