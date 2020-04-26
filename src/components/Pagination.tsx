@@ -7,12 +7,11 @@ interface Props {
   nextPage: () => void;
   currentPage: number;
   repositories: Repositories | undefined;
-  loading: boolean;
 }
 
 const Pagination = (props: Props) => {
-  const { prevPage, nextPage, currentPage, repositories, loading } = props;
-  if (!repositories || loading || !repositories.search.repositoryCount)
+  const { prevPage, nextPage, currentPage, repositories } = props;
+  if (!repositories || !repositories.search.repositoryCount)
     return null;
 
   const pagesAmount = repositories.search.repositoryCount / itemsPerPage;

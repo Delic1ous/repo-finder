@@ -1,5 +1,6 @@
 $borderRadius: 8px;
 $mainColor: #292929;
+$textColor: darken(white, 15%);
 $dropShadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.5),
   0px 0px 4px 0px rgba(0, 0, 0, 0.5);
 
@@ -13,6 +14,32 @@ $dropShadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.5),
   cursor: pointer;
 }
 
+.button {
+  @extend .clickable;
+  border: none;
+  color: $textColor;
+  background: darken($mainColor, 6%);
+  font-size: 16px;
+  padding: 0;
+  height: 35px;
+  width: 120px;
+  font-weight: bold;
+  box-sizing: border-box;
+  border-radius: $borderRadius;
+  box-shadow: $dropShadow;
+  &:hover {
+    background: darken($mainColor, 8%);
+  }
+  &:disabled {
+    background: lighten($mainColor, 2%);
+    color: darken(white, 40%);
+    cursor: not-allowed;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
 body {
   background-color: lighten($mainColor, 2%);
   margin: 0;
@@ -21,11 +48,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: white;
+  color: $textColor
+}
+
+svg {
+  fill: $textColor
 }
 
 a {
-  color: white;
+  color:$textColor;
   text-decoration: none;
 }
 
@@ -46,9 +77,20 @@ a {
   border-radius: $borderRadius;
 }
 
-svg.loader {
+div.loader {
+  @extend .flex-center;
   flex-grow: 1;
-  fill: lighten($mainColor, 80%)
+  flex-direction: column;
+  justify-content: space-between;
+  svg {
+    width: 80%;
+    margin-top: 48px;
+    fill: darken($mainColor, 6%);
+  }
+  button {
+    @extend .button;
+    width: 240px;
+  }
 }
 
 form {
@@ -69,7 +111,7 @@ form {
     border-top-left-radius: $borderRadius;
     border-bottom-left-radius: $borderRadius;
     background-color: darken($mainColor, 4%);
-    color: white;
+    color: $textColor;
   }
   button {
     @extend .flex-center;
@@ -83,7 +125,7 @@ form {
     border: none;
     background-color: darken($mainColor, 4%);
     cursor: pointer;
-    color: white;
+    color: $textColor;
     &:focus {
       outline: none;
       // box-shadow: inset $dropShadow;
@@ -139,29 +181,7 @@ form {
   margin-top: 12px;
   border-radius: $borderRadius;
   button {
-    @extend .clickable;
-    border: none;
-    color: white;
-    background: darken($mainColor, 6%);
-    font-size: 16px;
-    padding: 0;
-    height: 35px;
-    width: 120px;
-    font-weight: bold;
-    box-sizing: border-box;
-    border-radius: $borderRadius;
-    box-shadow: $dropShadow;
-    &:hover {
-      background: darken($mainColor, 8%);
-    }
-    &:disabled {
-      background: lighten($mainColor, 2%);
-      color: darken(white, 40%);
-      cursor: not-allowed;
-    }
-    &:focus {
-      outline: none;
-    }
+    @extend .button;
   }
 }
 

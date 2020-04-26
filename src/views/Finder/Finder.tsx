@@ -4,6 +4,7 @@ import { GET_REPOSITORIES, Repositories } from "./Query";
 import SearchInput from "../../components/SearchInput";
 import RepositoriesList from "../../components/RepositoriesList";
 import Pagination from "../../components/Pagination";
+import Loader from "../../components/Loader";
 
 export const itemsPerPage = 30;
 
@@ -45,7 +46,7 @@ const Finder = () => {
   }, [searching]);
 
   useEffect(() => {
-    // Custom cache due to abort query issue (see line:68)
+    // Custom cache due to abort query issue (see line:78)
     if (data) {
       if (!customCache) {
         // Setting the first page
@@ -65,6 +66,7 @@ const Finder = () => {
         });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   const handleSearch = (event: React.FormEvent<HTMLInputElement>) => {
@@ -83,7 +85,7 @@ const Finder = () => {
 
   const search = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!searchValue) return;
+    if (!searchValue || loading) return;
     setCurrentPage(0);
     if (searchValue === savedSearchQuery) {
       // preventing from refetching since the value not in cache yet
@@ -153,21 +155,24 @@ const Finder = () => {
         onChange={handleSearch}
         value={searchValue}
         loading={loading}
-        abortQueries={abortQueries}
       />
-      <RepositoriesList
-        currentPage={currentPage}
-        itemsPerPage={itemsPerPage}
-        list={customCache}
-        loading={loading}
-      />
-      <Pagination
-        prevPage={prevPage}
-        nextPage={handleNextPage}
-        currentPage={currentPage}
-        repositories={customCache}
-        loading={loading}
-      />
+      {loading ? (
+        <Loader abortQueries={abortQueries} />
+      ) : (
+        <>
+          <RepositoriesList
+            currentPage={currentPage}
+            itemsPerPage={itemsPerPage}
+            list={customCache}
+          />
+          <Pagination
+            prevPage={prevPage}
+            nextPage={handleNextPage}
+            currentPage={currentPage}
+            repositories={customCache}
+          />
+        </>
+      )}
     </>
   );
 };

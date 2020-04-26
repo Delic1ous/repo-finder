@@ -1,35 +1,27 @@
 import React from "react";
 import SearchIcon from "../icons/SearchIcon";
-import CloseIcon from "../icons/CloseIcon";
 
 interface Props {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   onChange: (event: React.FormEvent<HTMLInputElement>) => void;
   value: string;
   loading: boolean;
-  abortQueries: () => void;
 }
 
 const SearchInput = (props: Props) => {
-  const { onSubmit, onChange, value, loading, abortQueries } = props;
-  
+  const { onSubmit, onChange, value, loading } = props;
+
   return (
     <form onSubmit={onSubmit}>
       <input
         disabled={loading}
         value={value}
         onChange={onChange}
-        placeholder={loading ? "Searching..." : "Search Repository..."}
+        placeholder="Search Repository..."
       />
-      {loading ? (
-        <button onClick={abortQueries}>
-          <CloseIcon />
-        </button>
-      ) : (
-        <button>
-          <SearchIcon />
-        </button>
-      )}
+      <button disabled={loading} type="submit">
+        <SearchIcon />
+      </button>
     </form>
   );
 };
