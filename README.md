@@ -1,12 +1,10 @@
-Deployed Project: 
-### `[http://delic1ous.github.io/repo-finder](http://delic1ous.github.io/repo-finder)`
-
 Usage
+<br />
 You need these environment variables:
 
 ### `REACT_APP_GIT=your_github_token`
 
-Place where it could be generated - https://github.com/settings/tokens (no permissions are required, so leave the checkboxes empty)
+Place where it could be generated - https://github.com/settings/tokens/new (no permissions are required, so leave the checkboxes empty)
 
 <br />
 
