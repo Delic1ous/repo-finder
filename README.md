@@ -1,7 +1,5 @@
-Deployed Project: 
-### `[http://delic1ous.github.io/repo-finder](http://delic1ous.github.io/repo-finder)`
-
 Usage
+<br />
 You need these environment variables:
 
 ### `REACT_APP_GIT=your_github_token`
