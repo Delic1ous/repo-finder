@@ -4,7 +4,7 @@ You need these environment variables:
 
 ### `REACT_APP_GIT=your_github_token`
 
-Place where it could be generated - https://github.com/settings/tokens (no permissions are required, so leave the checkboxes empty)
+Place where it could be generated - https://github.com/settings/tokens/new (no permissions are required, so leave the checkboxes empty)
 
 <br />
 
