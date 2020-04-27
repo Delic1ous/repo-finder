@@ -36,7 +36,6 @@ const cache = new InMemoryCache({fragmentMatcher})
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache,
-  queryDeduplication: false
 });
 
 ReactDOM.render(
